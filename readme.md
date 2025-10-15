@@ -1,24 +1,26 @@
 # Bank Subscription Prediction
 
-##  my key decisions for this task
+###  my key decisions for this task
+#### code
 - i habitually prefer to work modularly so different parts of the pipeline can be individually debugged and run. 
 - i have kept utils separate for use across projects. these in future would ideally have unit tests.
 - usually i would split model inference into it's own script but for ease of submission have retained with training.
 - i retained eda.ipynb to show some thinking into features (how to handle categoricals, assess missing values, feature engineering possibilties)
-- i did not scale numerical variables as tree based methods handle these well generally, particularly as a first pass. this could be considered to reduce the problem space if there are a large number of outliers / spread in data.
+#### data science 
+- i did not scale numerical variables as tree based methods handle these well generally, particularly as a first pass. this could be considered to reduce the problem space if there are a large number of outliers / spread in data to reduce the splits/computation effort.
 - i one-hot encoded due to low cardinality of categorical variables, which means the feature space would not explode.
 - i applied SMOTE to handle imbalance. undersampling can hide trends and oversampling can lead to biases, and balancing in model parameters alone did not produce an improved performance.
 - tested 1 bagging and one boosting method. xgboost outperformed in first pass, so i ran randomisedCV to enhance eprformance. 
 - i focussed on f1 to balance recall and precision and to set a cutoff for predictions - accuracy is not the best for imbalanced problems (represents great performance on the problems less interested class)
 
-## Notes  
+## notes  
 - Notebooks (`eda.ipynb`, `model_insights.ipynb`) are for exploration and insights only, not required for core model training.  
 
 ## improvements
 - the model outputs dont all make sense (theres a heavy focus on contact month) - id want to understand this variable better (SMEs, check correlation with target, etc)
-- more understanding of features generally
-- feature importances is very slapdash - need to measure consistency of important features across models for stability
-- feature impotance interpretation is not ideal - not easy to translate to insights. could put important features these into regression model to use coefficients as clear guidance on feature importance for example, or explore SHAP or other interpretations for clearer insights.
+- would want more understanding of features generally (more EDA, engineering, SME input)
+- feature importances - need to measure consistency of important features across models for stability before implementation in market
+- feature impotance interpretation is not ideal - not easy to translate to insights. could put important features these into regression model to use coefficients as clear guidance on feature signal for example, or explore SHAP or other interpretations for insights.
 
 
 
