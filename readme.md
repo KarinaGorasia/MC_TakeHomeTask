@@ -1,4 +1,4 @@
-# Bank Subscription Prediction
+# Understanding Bank Subscription
 
 ###  my key decisions for this task
 #### code
